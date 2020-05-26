@@ -1,14 +1,11 @@
 package com.cities.restAPI.repository;
 
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import com.cities.restAPI.model.City;
 
 
 import java.util.List;
-
-
 
 public interface CityRepository extends JpaRepository<City, Long>{
 	

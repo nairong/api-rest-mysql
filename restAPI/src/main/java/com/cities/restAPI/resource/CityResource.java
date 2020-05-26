@@ -2,6 +2,10 @@ package com.cities.restAPI.resource;
 
 
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -89,11 +93,43 @@ public class CityResource {
 	public City updateCity(@RequestBody  City city) {
 		return cityRepository.save(city);
 	}
+	
+	
+	@ApiOperation(value="Insere CSV")
+	@GetMapping("/cidades/insere/")
+	public void saveCSV() {
+		
+		try {
+			String line ="";
+			BufferedReader br = new BufferedReader( new FileReader("src/main/resources/BackEndc.csv"));
+			int cont = 1;
+			while((line=br.readLine())!=null) {
+				String [] data=line.split(",");
+				City c = new City();
+				if(cont>1) {
+					c.setAlternative_names(data[7]);
+					c.setCapital(data[3]);
+					c.setIbge_id(Long.parseLong(data[0]));
+					c.setLat(new BigDecimal(data[5]));
+					c.setLon(new BigDecimal(data[4]));
+					c.setMesoregion(data[9]);
+					c.setMicroregion(data[8]);
+					c.setName(data[2]);
+					c.setNo_accents(data[6]);
+					c.setUf(data[1]);
+				cityRepository.save(c);
+				}
+				cont++;
+			}
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	
 	
 }	
-	
+}
 	
 	
 	

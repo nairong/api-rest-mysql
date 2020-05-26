@@ -36,8 +36,10 @@ public class City implements Serializable{
 	
 	private String mesoregion;
 	
-
-
+	public City () {
+	}
+	
+	
 	public City(long ibge_id, String uf, String name, String capital, BigDecimal lon, BigDecimal lat, String no_accents,
 			String alternative_names, String microregion, String mesoregion) {
 		
