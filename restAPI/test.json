@@ -1,0 +1,12 @@
+{
+  "alternative_names": "string",
+  "capital": "string",
+  "ibge_id": 0,
+  "lat": 0,
+  "lon": 0,
+  "mesoregion": "string",
+  "microregion": "string",
+  "name": "funfando",
+  "no_accents": "string",
+  "uf": "string"
+}
